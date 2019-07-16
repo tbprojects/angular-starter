@@ -1,27 +1,52 @@
-# AngularStarter
+# Angular Starter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1.
+Angular starter project with dev API based on JSON Server.
 
-## Development server
+## Tech stack:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* [Angular](http://angular.io)
+* [Angular Material](http://material.angular.io)
+* [Angular CDK](https://material.angular.io/cdk)
+* [Angular Flex-Layout](https://github.com/angular/flex-layout/wiki/Responsive-API)
+* [JSON Server](https://github.com/typicode/json-server)
+* [ng-mocks](https://github.com/ike18t/ng-mocks)
 
-## Code scaffolding
+## Development server & API
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* `npm run start` for a dev server. Default http://localhost:4200/
+* `npm run api` for a dev api. Default http://localhost:4210/
+* `npm run build-prod` to build app for production
 
-## Build
+## Adding new resources
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* add interface that defines a resource in `projects/dev-api/types`
+* add collection of records in `projects/dev-api/mocks`
+* add custom routes in `projects/dev-api/routes`
+* connect mocks in `projects/dev-api/db.ts`
+* connect custom routes in `projects/dev-api/routes.ts`
 
-## Running unit tests
+You can use `@api/types/*` path for accessing types in app. 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You can use `@api/mocks/*` path for accessing mocks in unit tests. 
 
-## Running end-to-end tests
+## NgModules
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* `AppModule` - should not be changed.
+* `CoreModule` - is used to import NgModules that should be loaded only once
+* `SharedModule` - is used to provide shared declarations and export widely used NgModules
+* `MaterialModule` - is used to handle the list of required Material Modules
+* `TestingModule` - is used to export widely used NgModules in component unit tests
 
-## Further help
+## Testing
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* use `ng-mocks` for mocking declarations (ex. `MockComponent(SomeComponent)`) 
+* use `@testing/mock-helpers` for mocking services (ex. `MockService(SomeService)`)
+* use `TestingModule` in component tests
+
+## Preview
+
+![Preview](./preview.png "Preview")
+
+## Author
+
+[Tomasz Borowski](http://tbprojects.pl)
